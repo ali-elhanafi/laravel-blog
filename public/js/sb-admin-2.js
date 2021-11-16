@@ -1,6 +1,9 @@
 (function($) {
   "use strict"; // Start of use strict
 
+    // $("#toggle-reply").click(function () {
+    //     $("#comment-reply-container").slideToggle("slow");
+    // });
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");

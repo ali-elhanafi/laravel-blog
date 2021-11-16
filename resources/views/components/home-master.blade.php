@@ -67,7 +67,7 @@
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-@yield('content')
+        @yield('content')
 
         </div>
 
@@ -149,7 +149,8 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+<script src="{{asset('js/sb-admin-2.js')}}"></script>
+@yield('scripts2')
 </body>
 
 </html>

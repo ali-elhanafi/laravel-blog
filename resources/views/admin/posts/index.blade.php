@@ -22,6 +22,7 @@
                             <th>Owner</th>
                             <th>Title</th>
                             <th>Image</th>
+                            <th>View Comments</th>
                             <th>Created Time</th>
                             <th>Last Update</th>
                             <th>Delete</th>
@@ -34,6 +35,7 @@
                             <th>Owner</th>
                             <th>Title</th>
                             <th>Image</th>
+                            <th>View Comments</th>
                             <th>Created Time</th>
                             <th>Last Update</th>
                             <th>Delete</th>
@@ -49,6 +51,7 @@
 
                                         <img height="70px" src="{{$post->post_image}}" alt="">
                                 </td>
+                                <td><a href="{{route('comment.show',$post->id)}}">Comments</a></td>
                                 <td>{{$post->created_at->diffForHumans()}}</td>
                                 <td>{{$post->updated_at->diffForHumans()}}</td>
                                 <td>

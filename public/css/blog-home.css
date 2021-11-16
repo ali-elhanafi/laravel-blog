@@ -6,3 +6,6 @@
 body {
   padding-top: 56px;
 }
+.comment-reply-container {
+    display: none;
+}

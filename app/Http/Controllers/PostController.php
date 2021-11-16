@@ -16,8 +16,9 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
+        $comments = $post->comments()->whereIsActive(1)->get();
 
-        return view('blog-post', ['post' => $post]);
+        return view('blog-post', ['post' => $post,'comments'=>$comments ]);
     }
 
     public function create()
