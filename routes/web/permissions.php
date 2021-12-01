@@ -9,3 +9,5 @@ Route::post('/permissions',[PermissionController::class, 'store'])->name('permis
 Route::delete('/permissions/{permission}/destroy',[PermissionController::class, 'destroy'])->name('permissions.destroy');
 Route::get('/permissions/{permission}/edit',[PermissionController::class, 'edit'])->name('permissions.edit');
 Route::put('/permissions/{permission}/update',[PermissionController::class, 'update'])->name('permissions.update');
+Route::delete('admin/bulk',[PermissionController::class , 'bulk'])->name('permission.bulk');
+

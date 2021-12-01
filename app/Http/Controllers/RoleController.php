@@ -10,6 +10,19 @@ use Illuminate\Support\Str;
 class RoleController extends Controller
 {
     //
+
+    public function bulk(Request $request)
+    {
+//        dd($request);
+        $bulkrole = Role::findorfail($request->checkboxArray);
+        foreach ($bulkrole as $bulk) {
+            $bulk->delete();
+        }
+        return redirect()->back();
+//        return 'its works';
+    }
+
+    //
     public function index()
     {
         return view('admin.roles.index', [

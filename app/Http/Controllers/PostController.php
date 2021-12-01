@@ -14,8 +14,9 @@ class PostController extends Controller
         $posts = auth()->user()->posts()->paginate(5);
         return view('admin.posts.index',  ['posts' => $posts ]);
     }
-    public function show(Post $post)
+    public function show($slug)
     {
+        $post = Post::findBySlugOrFail( $slug);
         $comments = $post->comments()->whereIsActive(1)->get();
 
         return view('blog-post', ['post' => $post,'comments'=>$comments ]);

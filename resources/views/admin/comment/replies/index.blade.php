@@ -52,7 +52,7 @@
                         @foreach($replies as $reply)
                             <tr>
                                 <td>{{$reply->id}}</td>
-                                <td><a href="{{route('post',$reply->comment->post->id)}}">view post</a></td>
+                                <td><a href="{{route('post',$reply->comment->post->slug)}}">view post</a></td>
                                 <td>{{$reply->author}}</td>
                                 <td>{{$reply->email}}</td>
                                 <td> {{$reply->body}}</td>

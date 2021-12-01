@@ -9,6 +9,18 @@ use Illuminate\Support\Str;
 
 class PermissionController extends Controller
 {
+
+
+    public function bulk(Request $request)
+    {
+//        dd($request);
+        $bulkpermission = Permission::findorfail($request->checkboxArray);
+        foreach ($bulkpermission as $bulk) {
+            $bulk->delete();
+        }
+        return redirect()->back();
+//        return 'its works';
+    }
     //
     public function index(){
         return view('admin.permissions.index',['permissions'=>Permission::all()]);

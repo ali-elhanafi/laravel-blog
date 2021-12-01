@@ -18,7 +18,7 @@ class PostCommentController extends Controller
     {
         //
         $comments = Comment::all();
-        return view('admin.comment.index',['comments'=>$comments]);
+        return view('admin.comment.index', ['comments' => $comments]);
     }
 
     /**
@@ -34,13 +34,13 @@ class PostCommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $user= auth()->user();
-        $data=[
+        $user = auth()->user();
+        $data = [
             'post_id' => $request->post_id,
             'author' => $user->name,
             'email' => $user->email,
@@ -49,7 +49,7 @@ class PostCommentController extends Controller
 
         ];
         Comment::create($data);
-        $request->session()->flash('comment_message','your comment has been submitted and waiting for approval');
+        $request->session()->flash('comment_message', 'your comment has been submitted and waiting for approval');
         //
         return redirect()->back();
 //        return $request->all();
@@ -58,7 +58,7 @@ class PostCommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Post $post)
@@ -66,14 +66,14 @@ class PostCommentController extends Controller
         //
 
         $comments = $post->comments->all();
-        return view('admin.comment.show',['comments'=>$comments]);
+        return view('admin.comment.show', ['comments' => $comments]);
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,30 +84,32 @@ class PostCommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
         Comment::findorfail($id)->update($request->all());
-       return redirect()->back();
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Comment $comment,Request $request)
+    public function destroy(Comment $comment, Request $request)
     {
         //
 
         $comment->delete();
 //        Session::flash('message' , 'post has deleted');
-        $request->session()->flash('comment_delete' , 'Comment was deleted');
+        $request->session()->flash('comment_delete', 'Comment was deleted');
         return redirect()->back();
     }
+
+
 }

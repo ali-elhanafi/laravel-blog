@@ -1,5 +1,8 @@
 <x-admin-master>
     @section('content')
+
+
+        @include('includes.tinymce')
         <h1>create</h1>
 {{--         {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\PostsController@store']) !!}--}}
 {{--    @csrf--}}
